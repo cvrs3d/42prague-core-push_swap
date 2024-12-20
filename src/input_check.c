@@ -6,7 +6,7 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:10:51 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/20 12:24:08 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:08:43 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,25 @@ static int	arg_is_zero(char *av)
 	return (1);
 }
 
-/*
-** Checks if all args are numbers
+/* is_correct_input:
+*   Checks if the given arguments are all numbers, without duplicates.
+*   Return: 1 if the arguments are valid, 0 if not.
 */
-int	is_correct_input(char *av)
+int	is_correct_input(char **av)
 {
 	int	i;
-	int	nb_zeroes;
+	int	nb_zeros;
 
-	nb_zeroes = 0;
+	nb_zeros = 0;
 	i = 1;
 	while (av[i])
 	{
 		if (!arg_is_number(av[i]))
 			return (0);
-		nb_zeroes += arg_is_zero(av[i]);
+		nb_zeros += arg_is_zero(av[i]);
 		i++;
 	}
-	if (nb_zeroes > 1)
+	if (nb_zeros > 1)
 		return (0);
 	if (have_duplicates(av))
 		return (0);

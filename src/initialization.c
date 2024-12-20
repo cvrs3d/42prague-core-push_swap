@@ -6,7 +6,7 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:34:25 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/20 12:49:18 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:09:40 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Fill stack with values
 */
-t_stack	*fill_stack_values(int ac, char *av)
+t_stack	*fill_stack_values(int ac, char **av)
 {
 	t_stack		*stack_a;
 	long int	nb;
@@ -37,7 +37,6 @@ t_stack	*fill_stack_values(int ac, char *av)
 	}
 	return (stack_a);
 }
-
 /*
 ** Assigns indexes to all values to use them in sorting
 */

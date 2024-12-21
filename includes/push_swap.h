@@ -6,7 +6,7 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:45:22 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/20 11:46:11 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:58:51 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_stack
 
 t_stack		*fill_stack_values(int ac, char **av);
 void		assign_index(t_stack *stack_a, int ac);
+char		**ft_split(char **argv);
+char		*ft_strdup(const char *s1);
 
 /* Sorting Algorithms */
 

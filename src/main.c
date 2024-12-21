@@ -6,11 +6,24 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:47:01 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/20 11:58:14 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:24:22 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	free_split(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
+}
 
 /*
 **Checks if the stack is already sorted
@@ -50,6 +63,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	if (argc == 2)
+	{
+		argv = ft_split(argv);
+		argc = 0;
+		while (argv[argc])
+			argc++;
+	}
 	if (!is_correct_input(argv))
 		exit_error(NULL, NULL);
 	stack_b = NULL;
@@ -59,5 +79,6 @@ int	main(int argc, char **argv)
 	push_swap(&stack_a, &stack_b, stack_size);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
+	free_split(argv);
 	return (0);
 }

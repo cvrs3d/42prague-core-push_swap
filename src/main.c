@@ -6,7 +6,7 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:47:01 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/21 12:33:56 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:37:10 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	run(char **argv, int argc)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int	stack_size;
+	int		stack_size;
 
 	stack_b = NULL;
 	stack_a = fill_stack_values(argc, argv);

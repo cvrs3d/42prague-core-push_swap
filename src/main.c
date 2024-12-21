@@ -6,7 +6,7 @@
 /*   By: yustinov <yustinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:47:01 by yustinov          #+#    #+#             */
-/*   Updated: 2024/12/21 12:24:22 by yustinov         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:33:56 by yustinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,31 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 }
 
 /*
+** Stack init
+*/
+static void	run(char **argv, int argc)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int	stack_size;
+
+	stack_b = NULL;
+	stack_a = fill_stack_values(argc, argv);
+	stack_size = get_stack_size(stack_a);
+	assign_index(stack_a, stack_size + 1);
+	push_swap(&stack_a, &stack_b, stack_size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+}
+
+/*
 ** Parses input, checks it, initialize a and b
 */
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		stack_size;
+	int	flag;
 
+	flag = 0;
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
@@ -69,16 +86,16 @@ int	main(int argc, char **argv)
 		argc = 0;
 		while (argv[argc])
 			argc++;
+		flag = 1;
 	}
 	if (!is_correct_input(argv))
+	{
+		if (flag == 1)
+			free_split(argv);
 		exit_error(NULL, NULL);
-	stack_b = NULL;
-	stack_a = fill_stack_values(argc, argv);
-	stack_size = get_stack_size(stack_a);
-	assign_index(stack_a, stack_size + 1);
-	push_swap(&stack_a, &stack_b, stack_size);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
-	free_split(argv);
+	}
+	run(argv, argc);
+	if (flag == 1)
+		free_split(argv);
 	return (0);
 }
